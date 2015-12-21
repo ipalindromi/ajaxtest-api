@@ -1,4 +1,7 @@
 /**
+ * THIS IS ONLY AN EXAMPLE! YOU SHOULD MAKE A FILE THAT LOOKS LIKE THIS IN YOUR OWN APP!
+ * -------------------------------------------------------------------------------------
+ *
  * This is the file that you should actually start the server with.
  * It instantiates an express app for you with the server will use
  * for routing, etc..., but instantiating it here allows you to

@@ -1,5 +1,6 @@
 {
   "name": "ajaxtest-api",
+  "private" : true,
   "license": "MIT",
   "version": "1.0.0",
   "description": "The backend code for ajaxtest.com",
