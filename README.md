@@ -7,8 +7,6 @@ This is the backend code at ajaxtest.com
 - Run `install npm`
 
 ## Usage
-In your application add `var ajaxtest-server = require('ajaxtest-api');`
-
 The server module accepts a callback and an express router, both of which are optional. The very simplest usage looks like
 
 ```
@@ -33,6 +31,6 @@ new ajaxtest-server(function (ajaxtest, app, router) {
 
 ```
 
-This will allow you to add to the default routes. If you don't want any of the default roots, just pass in
+This will allow you to add to the default routes. If you don't want any of the default routes, just pass in
 an express router as the second argument and the server will use that instead.
 
