@@ -3,8 +3,12 @@ This is the backend code at ajaxtest.com
 
 ## Installation
 
+### If you just want this repo
 - Clone the repo
 - Run `install npm`
+
+### To integrate with your own project
+- `npm install git+https://github.com/ipalindromi/ajaxtest-api.git --save`
 
 ## Usage
 The server module accepts a callback and an express router, both of which are optional. The very simplest usage looks like
