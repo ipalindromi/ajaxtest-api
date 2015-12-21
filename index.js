@@ -6,6 +6,12 @@
  **/
 var express = require('express');
 
-var ajaxtest = require('./src/server.js');
+var server = require('./src/server.js');
 
-var server = new ajaxtest().start();
+new server(function (ajaxtest, app, router) {
+
+	/**
+	 * Do fun things with the app or router here, like add new routes
+	 */
+	ajaxtest.start();
+});

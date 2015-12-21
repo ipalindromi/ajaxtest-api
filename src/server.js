@@ -1,18 +1,9 @@
-
 var express = require('express');
 var path = require("path");
 
-var ajaxtest = function (app, router) {
+var ajaxtest = function (callback, router) {
 
-	if (!app) {
-		app = express();
-	}
-
-	this._app = app;
-
-	if (!router) {
-		router = express.Router();
-	}
+	this._app = express();
 
 	/**
 	 * Sets up the server to allow universal origins...
@@ -20,24 +11,25 @@ var ajaxtest = function (app, router) {
 	 * but since keeping this open is the point of the project,
 	 * it makes sense to do it in the code.
 	 */
-	app.all('*', function (req, res, next) {
+	this._app.all('*', function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "X-Requested-With");
 		res.header('Access-Control-Allow-Headers', 'Content-Type');
 		next();
 	});
 
-	router.get('/api', function (req, res) {
-		res.json({
-			message: 'Hi! You\'re receiving ajax from ajaxtest.com!',
-			ip: req.headers['x-real-ip'] || req.connection.remoteAddress
-		});
-	});
+	router = router || require('./router.js');
 
-	app.use('/', router);
+	// Use the router provided
+	this._app.use('/', router);
+
+	if (callback && typeof callback === 'function') {
+		callback(this, this._app, router);
+	}
 };
 
 ajaxtest.prototype.start = function (port) {
+
 	port = port || 8082;
 
 	console.log('Starting on port ' + port);
