@@ -26,6 +26,9 @@ var ajaxtest = function (callback, router) {
 	if (callback && typeof callback === 'function') {
 		callback(this, this._app, router);
 	}
+	else {
+		this.start();
+	}
 };
 
 ajaxtest.prototype.start = function (port) {
