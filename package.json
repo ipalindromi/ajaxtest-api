@@ -2,7 +2,7 @@
   "name": "ajaxtest-api",
   "private": true,
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The backend code for ajaxtest.com",
   "main": "./src/server.js",
   "scripts": {
