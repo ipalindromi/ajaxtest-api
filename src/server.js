@@ -1,9 +1,11 @@
 var express = require('express');
 var path = require("path");
+var http = require('http').Server(express);
 
 var ajaxtest = function (callback, router) {
 
 	this._app = express();
+	this._io = require('socket.io').listen(http);
 
 	/**
 	 * Sets up the server to allow universal origins...
