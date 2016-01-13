@@ -19,7 +19,7 @@ var ajaxtest = function (callback, router) {
 		next();
 	});
 
-	router = router || require('./router.js');
+	router = router || require('./router.js')(this.app);
 
 	// Use the router provided
 	this.app.use('/', router);
