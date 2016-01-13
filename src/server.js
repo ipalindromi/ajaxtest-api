@@ -4,8 +4,8 @@ var http = require('http').Server(express);
 
 var ajaxtest = function (callback, router) {
 
-	this._app = express();
-	this._io = require('socket.io').listen(http);
+	this.app = express();
+	this.ws = require('express-ws')(this.app);
 
 	/**
 	 * Sets up the server to allow universal origins...
@@ -13,19 +13,19 @@ var ajaxtest = function (callback, router) {
 	 * but since keeping this open is the point of the project,
 	 * it makes sense to do it in the code.
 	 */
-	this._app.all('*', function (req, res, next) {
+	this.app.all('*', function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
-		
+
 		next();
 	});
 
 	router = router || require('./router.js');
 
 	// Use the router provided
-	this._app.use('/', router);
+	this.app.use('/', router);
 
 	if (callback && typeof callback === 'function') {
-		callback(this, this._app, router);
+		callback(this, this.app, router);
 	}
 	else {
 		this.start();
@@ -38,7 +38,7 @@ ajaxtest.prototype.start = function (port) {
 
 	console.log('Starting on port ' + port);
 
-	this._app.listen(port);
+	this.app.listen(port);
 };
 
 
